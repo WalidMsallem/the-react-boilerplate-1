@@ -1,0 +1,15 @@
+{
+  "title": {
+    "id": "title",
+    "defaultMessage": "Home page"
+  },
+  "hello": {
+    "id": "hello",
+    "defaultMessage": "hello, home"
+  },
+
+  "hi": {
+    "id": "hi",
+    "defaultMessage": "Bonjour walid"
+  }
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "path": "/",
+    "componentPath": "home",
+    "layout": "Default",
+    "roles": []
+  },
+  {
+    "path": "manage-task",
+    "componentPath": "managetask",
+    "layout": "LeftSidebar",
+    "roles": []
+  }
+]
