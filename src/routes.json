@@ -10,5 +10,11 @@
     "componentPath": "managetask",
     "layout": "LeftSidebar",
     "roles": []
+  },
+  {
+    "path": "test/:id/:status",
+    "componentPath": "test",
+    "layout": "Default",
+    "roles": []
   }
 ]

@@ -10,30 +10,20 @@ export const useTasks = () => {
 
   const state = useSelector<{ tasks: State }>(({ tasks }) => tasks)
 
-  const findTaskById = (id: string) =>
-    useSelector<{ tasks: State }>(({ tasks }) =>
-      tasks.list.find(element => element.id === id),
-    )
-  const test = (id: string) =>
-    useCallback(
-      id =>
-        useSelector<{ tasks: State }>(({ tasks }) =>
-          tasks.list.find(element => element.id === id),
-        ),
-      [],
-    )
   const createTask = useCallback(actions.createTasks, [])
 
   const editTask = useCallback(actions.editTask, [])
 
   const deleteTask = useCallback(actions.deleteTask, [])
 
+  const getAllTasks = useCallback(actions.getAllTasks, [])
+
   return {
     editTask,
     createTask,
-    findTaskById,
     state,
     deleteTask,
+    getAllTasks,
   }
 }
 

@@ -26,10 +26,11 @@ const Managetask = () => {
     description: '',
     id: '',
   })
+
   const { createTask, state, editTask }: any = useTasks()
 
   useEffect(() => {
-    const task = state.list.find(
+    const task = state.list.data.results.find(
       element => element.id === searchParams.get('task'),
     )
     task && setFrom(task)
@@ -37,11 +38,16 @@ const Managetask = () => {
 
   const handleSubmit = () => {
     if (isEditPage) {
-      editTask(form)
-      navigate('/')
+      editTask(form, () => navigate('/'))
+      // navigate('/')
     } else {
-      createTask(form)
-      navigate('/')
+      createTask(
+        {
+          title: form.title,
+          description: form.description,
+        },
+        () => navigate('/'),
+      )
     }
   }
   const handleChange = (

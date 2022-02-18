@@ -15,7 +15,8 @@ type TaskitemPropType = {
 const Taskitem = ({ id, title, description }: TaskitemPropType) => {
   const t = useMessages('taskitem')
   const navigate = useNavigate()
-  const { deleteTask } = useTasks()
+  const { deleteTask, state }: any = useTasks()
+  console.log('state.deleteTask.loading', state.deleteTask.loading)
   return (
     <TaskItemStyled>
       <Grid sx={{ flex: 11 }}>
@@ -24,9 +25,13 @@ const Taskitem = ({ id, title, description }: TaskitemPropType) => {
       </Grid>
       <Grid sx={{ flex: 1 }}>
         <DeleteRoundedIcon onClick={() => deleteTask(id)} />
-        <ThreeDRotationIcon
-          onClick={() => navigate(`/manage-task?task=${id}`)}
-        />
+        {state.deleteTask.loading ? (
+          <div>loading</div>
+        ) : (
+          <ThreeDRotationIcon
+            onClick={() => navigate(`/manage-task?task=${id}`)}
+          />
+        )}
       </Grid>
     </TaskItemStyled>
   )

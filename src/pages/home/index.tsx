@@ -3,10 +3,10 @@ import Home from './Home'
 import { useMessages } from 'app/hooks'
 import messages from './messages.json'
 import React from 'react'
-
+import { routes } from 'app/routes'
 const HomePage = props => {
   const t = useMessages('home')
-
+  console.log('routes', routes.test('kk', 'nnnn'))
   return (
     <>
       <Helmet>

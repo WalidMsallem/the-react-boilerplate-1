@@ -5,8 +5,16 @@ const creator = actionsCreator()
 
 export const init = creator.empty(constants.init)
 
-export const createTasks = creator.withPayload<Task>(constants.CREATE_TASK)
+export const createTasks = creator.withPayloadAndCallback<Task>(
+  constants.CREATE_TASK.request,
+)
 
-export const editTask = creator.withPayload<Task>(constants.EDIT_TASK)
+export const editTask = creator.withPayloadAndCallback<Task>(
+  constants.EDIT_TASK.request,
+)
 
-export const deleteTask = creator.withPayload<string>(constants.DELETE_TASK)
+export const deleteTask = creator.withPayload<string>(
+  constants.DELETE_TASK.request,
+)
+
+export const getAllTasks = creator.empty(constants.GET_ALL_TASK.request)

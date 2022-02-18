@@ -1,6 +1,6 @@
-// import { AsyncState } from 'app/types/redux'
+import { AsyncState } from 'app/types/redux'
 
-import { Task } from './tasks.type'
+import { Task, PaginateData } from './tasks.type'
 
 const initialState: State = {
   // createTasks: {
@@ -8,24 +8,38 @@ const initialState: State = {
   //   error: null,
   //   data: null,
   // },
-  list: [
-    {
-      id: '1',
-      title: 'title 1',
-      description: 'description 1',
+  createTask: {
+    loading: false,
+    error: '',
+  },
+  editTask: {
+    loading: false,
+    error: '',
+  },
+  deleteTask: {
+    loading: false,
+    error: '',
+  },
+  list: {
+    data: {
+      results: [],
+      page: 1,
+      limit: 10,
+      totalPages: 1,
+      totalResults: 1,
     },
-    {
-      id: '2',
-      title: 'title 2',
-      description: 'description 2',
-    },
-  ],
+    error: null,
+    loading: false,
+  },
 }
 export default initialState
 
 export type State = {
   // createTasks: AsyncState<null | Tasks>
-  list: Task[]
+  list: AsyncState<PaginateData<Task[]>[]>
+  createTask: AsyncState<any>
+  editTask: AsyncState<any>
+  deleteTask: AsyncState<any>
 }
 
 // type Tasks = {
