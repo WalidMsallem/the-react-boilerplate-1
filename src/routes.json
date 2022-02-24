@@ -3,7 +3,7 @@
     "path": "/",
     "componentPath": "home",
     "layout": "Default",
-    "roles": []
+    "roles": ["doctor"]
   },
   {
     "path": "manage-task",
@@ -12,8 +12,8 @@
     "roles": []
   },
   {
-    "path": "test/:id/:status",
-    "componentPath": "test",
+    "path": "login",
+    "componentPath": "login",
     "layout": "Default",
     "roles": []
   }

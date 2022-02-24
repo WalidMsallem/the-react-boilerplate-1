@@ -11,4 +11,10 @@ export default {
     editById: (id: string) => `${prefix}/task/${id}`,
     deleteById: (id: string) => `${prefix}/task/${id}`,
   },
+  auth: {
+    login: `${prefix}/auth/login `,
+  },
+  user: {
+    me: `${prefix}/users/me `,
+  },
 }

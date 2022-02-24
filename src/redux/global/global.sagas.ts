@@ -5,30 +5,65 @@ import * as api from './global.services'
 import { push } from 'redux-first-history'
 // ! FIXME: add routing in sagas
 
-export function* exampleSaga() {
-  yield takeLatest(constants.createUser.request, function* (action: Action) {
+export function* loginUserSaga() {
+  yield takeLatest(constants.LOGIN_USER.request, function* (action: Action) {
     try {
       type Response = any
-      // const response: Response = yield call(api.helloWorld)
-      const response: Response = 'hello world'
-      yield put(push('/walid'))
-      if (response) {
-        yield put({
-          type: constants.createUser.success,
-          payload: {},
-        })
-      } else {
-        yield put({
-          type: constants.createUser.failure,
-          payload: {
-            error: response.error,
-          },
-        })
-      }
+      const response: Response = yield call(api.loginUser, action.payload)
+      // const response: Response = 'hello world'
+      // yield put(push('/walid'))
+      // if (response) {
+      yield put({
+        type: constants.LOGIN_USER.success,
+        payload: response,
+      })
+      yield put({
+        type: constants.GET_USER_DATA.request,
+        payload: response.tokens.access.token,
+      })
+      // } else {
+      //   console.log('response1', response)
+      //   yield put({
+      //     type: constants.LOGIN_USER.failure,
+      //     payload: {
+      //       error: response,
+      //     },
+      //   })
+      // }
     } catch (e: any) {
       yield put({
-        type: constants.createUser.failure,
-        payload: { error: e.response.data ? e.response.data.error : e.message },
+        type: constants.LOGIN_USER.failure,
+        payload: { error: e.response.data ? e.response.data : e.message },
+      })
+    }
+  })
+}
+
+export function* loadUserDataSaga() {
+  yield takeLatest(constants.GET_USER_DATA.request, function* (action: Action) {
+    try {
+      type Response = any
+      const response: Response = yield call(api.loadUserData, action.payload)
+      // const response: Response = 'hello world'
+      // yield put(push('/walid'))
+      // if (response) {
+      yield put({
+        type: constants.GET_USER_DATA.success,
+        payload: response,
+      })
+      // } else {
+      //   console.log('response1', response)
+      //   yield put({
+      //     type: constants.GET_USER_DATA.failure,
+      //     payload: {
+      //       error: response,
+      //     },
+      //   })
+      // }
+    } catch (e: any) {
+      yield put({
+        type: constants.GET_USER_DATA.failure,
+        payload: { error: e.response.data ? e.response.data : e.message },
       })
     }
   })

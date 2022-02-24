@@ -4,14 +4,16 @@ import { useSelector, useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { State } from './global.state'
 
-export const useExample = () => {
+export const useGlobal = () => {
   const actions = useActions()
-  const state = useSelector((state: State) => state)
+  const state = useSelector(({ global }: { global: State }) => global)
 
-  const createUser = useCallback(actions.createUser, [])
+  const loginUser = useCallback(actions.loginUser, [])
+  const loadUserData = useCallback(actions.loadUserData, [])
 
   return {
-    createUser,
+    loginUser,
+    loadUserData,
     state,
   }
 }

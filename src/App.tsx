@@ -1,10 +1,9 @@
-import React, { Suspense, useState } from 'react'
+import React, { Suspense, useState, useEffect } from 'react'
 // import { Route, Routes, Navigate } from 'react-router-dom'
 import routes from './routes'
 import Routes from './components/base/RoutesHandler'
 import Loading from './components/base/Loading'
 import Providers from './Providers'
-
 function App() {
   // const [tasks, setTasks] = useState<{}>([
   //   {
@@ -42,6 +41,8 @@ function App() {
   //     }),
   //   )
   // }
+  console.log('routes', routes)
+
   return (
     <Providers>
       <Suspense fallback={<Loading />}>
